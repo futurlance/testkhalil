@@ -37,7 +37,7 @@ public class PropositionDAO implements IProposition{
          private static final String SQL_DELETE ="DELETE FROM  propositions  WHERE ID=?";
          private static final String SQL_UPDATE ="UPDATE  propositions SET titre=?,description=?,dure_estime=?,date_debut=?,date_fin=?,budget=?,id_categorie=?,id_free=? WHERE Id=?";
         private static final String SQL_FIND_ID_CAT="SELECT * FROM propositions WHERE id_categorie=?";
-        private static final String SQL_UPDATE1 ="UPDATE  propositions SET id_free=? WHERE id=?";
+        private static final String SQL_UPDATE1 ="UPDATE  `test_pdev`.`propositions` SET  `id_free` =? WHERE  `propositions`.`id` =?;";
         
         
     public static IProposition getInstance() {

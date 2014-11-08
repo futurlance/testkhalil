@@ -137,6 +137,22 @@ public class proprietaire_interface extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         text2 = new javax.swing.JTextField();
+        jDesktopPane4 = new javax.swing.JDesktopPane();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jTextField14 = new javax.swing.JTextField();
+        jTextField15 = new javax.swing.JTextField();
+        jTextField16 = new javax.swing.JTextField();
+        deconnexion_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -470,6 +486,67 @@ public class proprietaire_interface extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Panier Propositions", jDesktopPane3);
 
+        jDesktopPane4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel19.setText("Prenom :");
+        jLabel19.setBounds(20, 20, 70, 16);
+        jDesktopPane4.add(jLabel19, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel23.setText("Nom :");
+        jLabel23.setBounds(20, 70, 35, 16);
+        jDesktopPane4.add(jLabel23, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel25.setText("Email :");
+        jLabel25.setBounds(20, 120, 40, 16);
+        jDesktopPane4.add(jLabel25, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel26.setText("Pays :");
+        jLabel26.setBounds(20, 170, 35, 16);
+        jDesktopPane4.add(jLabel26, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel27.setText("Ville :");
+        jLabel27.setBounds(20, 210, 33, 16);
+        jDesktopPane4.add(jLabel27, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel28.setText("Login :");
+        jLabel28.setBounds(20, 260, 39, 16);
+        jDesktopPane4.add(jLabel28, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel29.setText("Mot de passe :");
+        jLabel29.setBounds(20, 310, 100, 16);
+        jDesktopPane4.add(jLabel29, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jTextField10.setBounds(160, 10, 160, 22);
+        jDesktopPane4.add(jTextField10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jTextField11.setBounds(160, 70, 160, 22);
+        jDesktopPane4.add(jTextField11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField12ActionPerformed(evt);
+            }
+        });
+        jTextField12.setBounds(160, 120, 160, 22);
+        jDesktopPane4.add(jTextField12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jTextField13.setBounds(160, 170, 160, 22);
+        jDesktopPane4.add(jTextField13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jTextField14.setBounds(160, 210, 160, 22);
+        jDesktopPane4.add(jTextField14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jTextField15.setBounds(160, 250, 160, 22);
+        jDesktopPane4.add(jTextField15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jTextField16.setBounds(160, 310, 160, 22);
+        jDesktopPane4.add(jTextField16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        deconnexion_button.setText("Deconnexion");
+        deconnexion_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deconnexion_buttonActionPerformed(evt);
+            }
+        });
+        deconnexion_button.setBounds(659, 40, 130, 25);
+        jDesktopPane4.add(deconnexion_button, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTabbedPane1.addTab("Mon Compte", jDesktopPane4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -490,6 +567,13 @@ public class proprietaire_interface extends javax.swing.JFrame {
        
         panel_2_boutton.setVisible(false);
         panel_ajouter.setVisible(true);
+        panel_modif.setVisible(false);
+        panel_general.removeAll();
+        panel_general.repaint();
+        panel_general.validate();
+        panel_general.add(panel_ajouter);
+       panel_general.repaint();
+        panel_general.validate();
     }//GEN-LAST:event_ajouter_boutoonActionPerformed
 
     private void envoyer_bouttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_envoyer_bouttonActionPerformed
@@ -563,6 +647,12 @@ public class proprietaire_interface extends javax.swing.JFrame {
         panel_modif.setVisible(true);
         panel_2_boutton.setVisible(false);
         panel_ajouter.setVisible(false);
+        panel_general.removeAll();
+        panel_general.repaint();
+        panel_general.validate();
+        panel_general.add(panel_modif);
+       panel_general.repaint();
+        panel_general.validate();
     }//GEN-LAST:event_supp_modif_bouttonActionPerformed
 
     private void retour_bouttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retour_bouttonActionPerformed
@@ -752,6 +842,17 @@ public class proprietaire_interface extends javax.swing.JFrame {
        text2.setText(tab22.getModel().getValueAt(row, 0).toString());
     }//GEN-LAST:event_tab22MouseClicked
 
+    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField12ActionPerformed
+
+    private void deconnexion_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deconnexion_buttonActionPerformed
+        
+        this.setVisible(false);
+        premiere_page page=new premiere_page();
+        page.setVisible(true);
+    }//GEN-LAST:event_deconnexion_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -792,6 +893,7 @@ public class proprietaire_interface extends javax.swing.JFrame {
     private javax.swing.JComboBox combo1;
     private javax.swing.JComboBox combo2;
     private com.toedter.calendar.JDateChooser date_fin;
+    private javax.swing.JButton deconnexion_button;
     private javax.swing.JTextArea description;
     private com.toedter.calendar.JDateChooser dure_debut;
     private javax.swing.JTextField dure_estime;
@@ -800,6 +902,7 @@ public class proprietaire_interface extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane3;
+    private javax.swing.JDesktopPane jDesktopPane4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -810,10 +913,17 @@ public class proprietaire_interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -829,6 +939,13 @@ public class proprietaire_interface extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
