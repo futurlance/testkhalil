@@ -18,4 +18,5 @@ public interface IProposition {
     void delete(Proposition categorie);
     void update(Proposition free);
     List<Proposition> findById_cat(int id);
+    void update1(Proposition free,int ch);
 }

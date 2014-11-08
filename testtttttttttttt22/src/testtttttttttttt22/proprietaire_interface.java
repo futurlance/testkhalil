@@ -5,11 +5,23 @@
 package testtttttttttttt22;
 
 import edu.esprit.dao.classes.CategorieDAO;
+import edu.esprit.dao.classes.CompetenceDAO;
 import edu.esprit.dao.classes.PropositionDAO;
+import edu.esprit.dao.classes.connecterdao;
+import edu.esprit.dao.classes.freelancerdao;
+import edu.esprit.dao.classes.proprietairedao;
 import edu.esprit.dao.interfaces.ICategorieDAO;
+import edu.esprit.dao.interfaces.ICompetence;
+import edu.esprit.dao.interfaces.IConnecterDao;
+import edu.esprit.dao.interfaces.IFreelancer;
 import edu.esprit.dao.interfaces.IProposition;
+import edu.esprit.dao.interfaces.Iproprietairedao;
 import edu.esprit.entities.Categorie;
 import edu.esprit.entities.Proposition;
+import edu.esprit.entities.competence;
+import edu.esprit.entities.connecter;
+import edu.esprit.entities.freelancer;
+import edu.esprit.entities.proprietaire;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -26,6 +38,7 @@ public class proprietaire_interface extends javax.swing.JFrame {
     public proprietaire_interface() {
         initComponents();
         getcategories();
+        getcompetence();
        panel_modif.setVisible(false);
         panel_ajouter.setVisible(false);
     }
@@ -38,6 +51,16 @@ public class proprietaire_interface extends javax.swing.JFrame {
         combo1.addItem(d.getNom());
         }
         }
+      public void getcompetence()
+      {
+          List<competence> listes = new ArrayList<competence>();
+        ICompetence cat_Dao = CompetenceDAO.getInstance();
+        listes = cat_Dao.findAll();
+        for (competence d : listes) {
+          
+        combo2.addItem(d.getNom());
+        }
+      }
      
 
     /**
@@ -73,8 +96,8 @@ public class proprietaire_interface extends javax.swing.JFrame {
         budgettt = new javax.swing.JTextField();
         dure_debut = new com.toedter.calendar.JDateChooser();
         date_fin = new com.toedter.calendar.JDateChooser();
-        competencee = new javax.swing.JTextField();
         combo1 = new javax.swing.JComboBox();
+        combo2 = new javax.swing.JComboBox();
         panel_modif = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_propos = new javax.swing.JTable();
@@ -106,14 +129,14 @@ public class proprietaire_interface extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tab22 = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         text1 = new javax.swing.JTextField();
-        text2 = new javax.swing.JTextField();
-        text3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tab33 = new javax.swing.JTable();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        text2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -218,8 +241,6 @@ public class proprietaire_interface extends javax.swing.JFrame {
         dure_debut.setBounds(370, 310, 170, 22);
         panel_ajouter.add(date_fin);
         date_fin.setBounds(370, 340, 170, 22);
-        panel_ajouter.add(competencee);
-        competencee.setBounds(370, 10, 150, 22);
 
         combo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,6 +249,9 @@ public class proprietaire_interface extends javax.swing.JFrame {
         });
         panel_ajouter.add(combo1);
         combo1.setBounds(370, 50, 150, 22);
+
+        panel_ajouter.add(combo2);
+        combo2.setBounds(370, 10, 150, 22);
 
         panel_general.add(panel_ajouter);
         panel_ajouter.setBounds(0, 0, 830, 450);
@@ -394,30 +418,32 @@ public class proprietaire_interface extends javax.swing.JFrame {
         jDesktopPane3.setBackground(new java.awt.Color(255, 255, 255));
 
         tab22.setModel(new ListProposition());
+        tab22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab22MouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tab22);
 
-        jScrollPane4.setBounds(0, 0, 670, 150);
+        jScrollPane4.setBounds(0, 0, 830, 150);
         jDesktopPane3.add(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel18.setText("Id :");
         jLabel18.setBounds(40, 220, 20, 16);
         jDesktopPane3.add(jLabel18, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel19.setText("Prenom :");
-        jLabel19.setBounds(40, 270, 60, 16);
-        jDesktopPane3.add(jLabel19, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jLabel20.setText("Nom :");
-        jLabel20.setBounds(40, 320, 60, 16);
+        jLabel20.setText("Proposition :");
+        jLabel20.setBounds(30, 270, 80, 16);
         jDesktopPane3.add(jLabel20, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        text1.setBounds(110, 220, 80, 22);
+        text1.setBounds(110, 220, 130, 22);
         jDesktopPane3.add(text1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        text2.setBounds(110, 260, 80, 22);
-        jDesktopPane3.add(text2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        text3.setBounds(110, 310, 80, 22);
-        jDesktopPane3.add(text3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jButton1.setText("Attribuer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jButton1.setBounds(180, 410, 83, 25);
         jDesktopPane3.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -431,6 +457,16 @@ public class proprietaire_interface extends javax.swing.JFrame {
 
         jScrollPane5.setBounds(292, 190, 530, 180);
         jDesktopPane3.add(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel21.setText("Freelancer :");
+        jLabel21.setBounds(40, 170, 90, 16);
+        jDesktopPane3.add(jLabel21, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel22.setText("Id :");
+        jLabel22.setBounds(30, 330, 30, 16);
+        jDesktopPane3.add(jLabel22, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        text2.setBounds(110, 320, 130, 22);
+        jDesktopPane3.add(text2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTabbedPane1.addTab("Panier Propositions", jDesktopPane3);
 
@@ -465,6 +501,7 @@ public class proprietaire_interface extends javax.swing.JFrame {
         String budget="";
         String categ="";
         String compet="";
+        String fre="";
         titres=titre.getText();
         desc=description.getText();
         dure_est=dure_estime.getText();
@@ -474,9 +511,8 @@ public class proprietaire_interface extends javax.swing.JFrame {
         dure_fins=dure_fins.substring(0,10);
         
         budget=budgettt.getText();
-        compet=competencee.getText();
         categ=combo1.getSelectedItem().toString();
-        
+        compet=combo2.getSelectedItem().toString();
         int x=0;
         List<Categorie> listes = new ArrayList<Categorie>();
         ICategorieDAO cat_Dao = CategorieDAO.getInstance();
@@ -488,19 +524,35 @@ public class proprietaire_interface extends javax.swing.JFrame {
        ICategorieDAO cat=new CategorieDAO();
         Categorie cattt=new Categorie();
         cattt=cat.findBYId(x);
-        JOptionPane.showMessageDialog(null,cattt.getId());
-        JOptionPane.showMessageDialog(null,cattt.getNom());
-        JOptionPane.showMessageDialog(null,cattt.getType());
-        
+        List<competence> ll = new ArrayList<competence>();
+        ICompetence comp =new CompetenceDAO();
+        ll=comp.findAll();
+        for (competence d : ll) {
+          if(compet.equals(d.getNom()))
+              x=d.getId(); 
+        }
+        competence ct=new competence();
+        ct=comp.findBYId(x);
+        JOptionPane.showMessageDialog(null, ct.getNom());
          int z=0;
         float bud=Float.parseFloat(budget);
-        Proposition prop=new Proposition(z, titres, desc, dure_est, dure_deb, dure_fins, bud, cattt, compet);
-        IProposition propos =new PropositionDAO();
-        propos.createproposition(prop);
-        JOptionPane.showMessageDialog(null, "Insertion Reuissite");
+        //********freelancer****
+        freelancer ff=new freelancer();
+        int a=3;
+        ff.setId(a);
+        //***************
+        connecter freee=new connecter();
+        IConnecterDao ifree =new connecterdao();
+        freee=ifree.findAll();
+         x=freee.getId();
+        proprietaire prop=new proprietaire();
+        Iproprietairedao iprop=new proprietairedao();
+        prop=iprop.findById(x);
         
-        
-        
+         Proposition propos=new Proposition(z, titres, desc, dure_est, dure_deb, dure_fins, bud,cattt,ff,ct,prop);
+        IProposition proposit =new PropositionDAO();
+        proposit.createproposition(propos);
+        JOptionPane.showMessageDialog(null, "Insertion Reuissite");   
     }//GEN-LAST:event_envoyer_bouttonActionPerformed
 
     private void budgetttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetttActionPerformed
@@ -564,17 +616,18 @@ public class proprietaire_interface extends javax.swing.JFrame {
         String budget="";
         String categ="";
         String compet="";
-        int z=Integer.parseInt(jTextField9.getText());
-        titres=jTextField1.getText();
-        desc=jTextField2.getText();
-        dure_est=jTextField3.getText();
-        dure_deb=jTextField4.getText();
-        dure_fins=jTextField5.getText();
+        String fre="";
+        titres=titre.getText();
+        desc=description.getText();
+        dure_est=dure_estime.getText();
+        dure_deb=dure_debut.getDate().toString();
+        dure_deb=dure_deb.substring(0,10);
+        dure_fins=date_fin.getDate().toString();
+        dure_fins=dure_fins.substring(0,10);
         
-        budget=jTextField6.getText();
-        compet=jTextField7.getText();
-        categ=jTextField8.getText();
-        
+        budget=budgettt.getText();
+        categ=combo1.getSelectedItem().toString();
+        compet=combo2.getSelectedItem().toString();
         int x=0;
         List<Categorie> listes = new ArrayList<Categorie>();
         ICategorieDAO cat_Dao = CategorieDAO.getInstance();
@@ -585,16 +638,38 @@ public class proprietaire_interface extends javax.swing.JFrame {
         }
        ICategorieDAO cat=new CategorieDAO();
         Categorie cattt=new Categorie();
-        cattt=cat.findBYId(x);  
+        cattt=cat.findBYId(x);
+        List<competence> ll = new ArrayList<competence>();
+        ICompetence comp =new CompetenceDAO();
+        ll=comp.findAll();
+        for (competence d : ll) {
+          if(compet.equals(d.getNom()))
+              x=d.getId(); 
+        }
+        competence ct=new competence();
+        ct=comp.findBYId(x);
+        JOptionPane.showMessageDialog(null, ct.getNom());
+         int z=0;
         float bud=Float.parseFloat(budget);
-        Proposition prop=new Proposition(z, titres, desc, dure_est, dure_deb, dure_fins, bud, cattt, compet);
-        IProposition propos =new PropositionDAO();
-        propos.delete(prop);
+        //********freelancer****
+        freelancer ff=new freelancer();
+        //***************
+        connecter freee=new connecter();
+        IConnecterDao ifree =new connecterdao();
+        freee=ifree.findAll();
+         x=freee.getId();
+        proprietaire prop=new proprietaire();
+        Iproprietairedao iprop=new proprietairedao();
+        prop=iprop.findById(x);
+        
+         Proposition propos=new Proposition(z, titres, desc, dure_est, dure_deb, dure_fins, bud,cattt,ff,ct,prop);
+        IProposition proposit =new PropositionDAO();
+        proposit.delete(propos);
         table_propos.setModel(new ListProposition());
     }//GEN-LAST:event_suprime_proposActionPerformed
 
     private void modif_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modif_buttonActionPerformed
-         String titres="";
+        String titres="";
         String desc="";
         String dure_est="";
         String dure_deb="";
@@ -602,17 +677,18 @@ public class proprietaire_interface extends javax.swing.JFrame {
         String budget="";
         String categ="";
         String compet="";
-        int z=Integer.parseInt(jTextField9.getText());
-        titres=jTextField1.getText();
-        desc=jTextField2.getText();
-        dure_est=jTextField3.getText();
-        dure_deb=jTextField4.getText();
-        dure_fins=jTextField5.getText();
+        String fre="";
+        titres=titre.getText();
+        desc=description.getText();
+        dure_est=dure_estime.getText();
+        dure_deb=dure_debut.getDate().toString();
+        dure_deb=dure_deb.substring(0,10);
+        dure_fins=date_fin.getDate().toString();
+        dure_fins=dure_fins.substring(0,10);
         
-        budget=jTextField6.getText();
-        compet=jTextField7.getText();
-        categ=jTextField8.getText();
-        
+        budget=budgettt.getText();
+        categ=combo1.getSelectedItem().toString();
+        compet=combo2.getSelectedItem().toString();
         int x=0;
         List<Categorie> listes = new ArrayList<Categorie>();
         ICategorieDAO cat_Dao = CategorieDAO.getInstance();
@@ -623,20 +699,58 @@ public class proprietaire_interface extends javax.swing.JFrame {
         }
        ICategorieDAO cat=new CategorieDAO();
         Categorie cattt=new Categorie();
-        cattt=cat.findBYId(x);  
+        cattt=cat.findBYId(x);
+        List<competence> ll = new ArrayList<competence>();
+        ICompetence comp =new CompetenceDAO();
+        ll=comp.findAll();
+        for (competence d : ll) {
+          if(compet.equals(d.getNom()))
+              x=d.getId(); 
+        }
+        competence ct=new competence();
+        ct=comp.findBYId(x);
+        JOptionPane.showMessageDialog(null, ct.getNom());
+         int z=0;
         float bud=Float.parseFloat(budget);
-        Proposition prop=new Proposition(z, titres, desc, dure_est, dure_deb, dure_fins, bud, cattt, compet);
-        IProposition propos =new PropositionDAO();
-        propos.update(prop);
+        //********freelancer****
+        freelancer ff=new freelancer();
+        //***************
+        connecter freee=new connecter();
+        IConnecterDao ifree =new connecterdao();
+        freee=ifree.findAll();
+         x=freee.getId();
+        proprietaire prop=new proprietaire();
+        Iproprietairedao iprop=new proprietairedao();
+        prop=iprop.findById(x);
+        
+         Proposition propos=new Proposition(z, titres, desc, dure_est, dure_deb, dure_fins, bud,cattt,ff,ct,prop);
+        IProposition proposit =new PropositionDAO();
+        proposit.update(propos);
         table_propos.setModel(new ListProposition());
     }//GEN-LAST:event_modif_buttonActionPerformed
 
     private void tab33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab33MouseClicked
        int row = tab33.getSelectedRow();
-        text1.setText(tab33.getModel().getValueAt(row, 0).toString());   
-        text2.setText(tab33.getModel().getValueAt(row, 1).toString());
-        text3.setText(tab33.getModel().getValueAt(row, 2).toString());   
+        text1.setText(tab33.getModel().getValueAt(row, 0).toString());  
+       
+          
     }//GEN-LAST:event_tab33MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        int id_free=Integer.parseInt(text1.getText());
+        int id_prop=Integer.parseInt(text2.getText());
+        IProposition iprop=new PropositionDAO();
+        Proposition propos=new Proposition();
+        propos=iprop.findById(id_prop);
+        iprop.update1(propos,id_free);
+        tab22.setModel(new ListProposition());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tab22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab22MouseClicked
+       int row=tab22.getSelectedRow();
+       text2.setText(tab22.getModel().getValueAt(row, 0).toString());
+    }//GEN-LAST:event_tab22MouseClicked
 
     /**
      * @param args the command line arguments
@@ -676,7 +790,7 @@ public class proprietaire_interface extends javax.swing.JFrame {
     private javax.swing.JButton ajouter_boutoon;
     private javax.swing.JTextField budgettt;
     private javax.swing.JComboBox combo1;
-    private javax.swing.JTextField competencee;
+    private javax.swing.JComboBox combo2;
     private com.toedter.calendar.JDateChooser date_fin;
     private javax.swing.JTextArea description;
     private com.toedter.calendar.JDateChooser dure_debut;
@@ -696,9 +810,10 @@ public class proprietaire_interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -736,7 +851,6 @@ public class proprietaire_interface extends javax.swing.JFrame {
     private javax.swing.JTable table_propos;
     private javax.swing.JTextField text1;
     private javax.swing.JTextField text2;
-    private javax.swing.JTextField text3;
     private javax.swing.JTextField titre;
     // End of variables declaration//GEN-END:variables
 }

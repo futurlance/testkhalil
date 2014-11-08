@@ -30,7 +30,7 @@ public class proprietairedao implements Iproprietairedao{
     private static final String SQL_FIND_ALL ="SELECT * FROM propraitaire ";
     private static final String SQL_DELETE ="DELETE FROM  propraitaire  WHERE ID=?";
     private static final String SQL_UPDATE ="UPDATE  propraitaire SET status=? WHERE ID=?";
-   
+   private static final String SQL_FIND_LOGIN =  "SELECT * FROM propraitaire WHERE login=?";
     
     
     public proprietaire findById(int id) {
@@ -165,5 +165,38 @@ public class proprietairedao implements Iproprietairedao{
             Logger.getLogger(proprietairedao.class.getName()).log(Level.SEVERE, "update failed", ex);
         }
     }
+    }
+    //***********************
+    public proprietaire findById1(String ch) {
+        proprietaire found = null;
+        
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;       
+        
+        try{
+            
+            pstmt = connection.prepareStatement(SQL_FIND_LOGIN);
+            pstmt.setString(1, ch);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                String adminId = rs.getString("id");
+                String adminPrenom = rs.getString("prenom");
+                String adminNom = rs.getString("nom");
+                String adminEmail = rs.getString("email");
+                String adminPays = rs.getString("pays");
+                String adminVille = rs.getString("ville");
+                String adminLogin = rs.getString("login");
+                String adminPwd = rs.getString("password");
+                String adminEntrep = rs.getString("nom_entreprise");
+                String adminstatus = rs.getString("status");
+                int x=Integer.parseInt(adminId);
+                found = new proprietaire(x,adminNom, adminNom, adminEmail, adminPays, adminVille, adminPwd, adminPwd, adminEntrep, adminstatus);
+            }
+
+                
+        }catch(SQLException  ex){
+           Logger.getLogger(proprietairedao.class.getName()).log(Level.SEVERE, "find failed", ex);
+        }
+        return found;
     }
 }

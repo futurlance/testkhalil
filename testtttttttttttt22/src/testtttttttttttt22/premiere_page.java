@@ -5,10 +5,14 @@
 package testtttttttttttt22;
 
 import edu.esprit.dao.classes.Administrateurdao;
+import edu.esprit.dao.classes.connecterdao;
 import edu.esprit.dao.classes.freelancerdao;
 import edu.esprit.dao.classes.proprietairedao;
+import edu.esprit.dao.interfaces.IConnecterDao;
 import edu.esprit.dao.interfaces.IFreelancer;
+import edu.esprit.dao.interfaces.Iproprietairedao;
 import edu.esprit.entities.administrateur;
+import edu.esprit.entities.connecter;
 import edu.esprit.entities.freelancer;
 import edu.esprit.entities.proprietaire;
 import java.sql.SQLException;
@@ -1000,13 +1004,36 @@ public class premiere_page extends javax.swing.JFrame {
             administrateur admin=new administrateur();
             admin=adminn.findById(1);
             if((admin.getLogin().equals(login))&&(admin.getPwd().equals(pwd)))
-            {
+            {       
+                    this.setVisible(false);
                     administrateur_interface page=new administrateur_interface();
                     page.setVisible(true);
             }
             else
             JOptionPane.showMessageDialog(null, "Attetion : Login ou mot de passe Erronée ");
         }
+        //********proprietaire**************
+        if(user_type.equals("proprietaire"))
+        {
+            
+            Iproprietairedao adminn= new proprietairedao();
+            proprietaire admin=new proprietaire();
+            
+            admin=adminn.findById1(login);
+            if((admin.getLogin().equals(login))&&(admin.getPwd().equals(pwd)))
+            {       
+                    this.setVisible(false);
+                    proprietaire_interface page=new proprietaire_interface();
+                    page.setVisible(true);
+                    IConnecterDao icon=new connecterdao();
+                    connecter con=new connecter(admin.getId());
+                    icon.save(con);
+                    
+            }
+            else
+            JOptionPane.showMessageDialog(null, "Attetion : Login ou mot de passe Erronée ");
+        }
+        //*****************************
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cat_buutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cat_buutonActionPerformed

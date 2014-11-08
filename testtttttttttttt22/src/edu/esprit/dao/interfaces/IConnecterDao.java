@@ -4,14 +4,14 @@
  */
 package edu.esprit.dao.interfaces;
 
-import edu.esprit.entities.competence;
+import edu.esprit.entities.connecter;
 import java.util.List;
 
 /**
  *
  * @author khalil
  */
-public interface ICompetence {
-    List<competence> findAll();
-    competence findBYId(int id);
+public interface IConnecterDao {
+    connecter findAll();
+    void save(connecter categorie);
 }

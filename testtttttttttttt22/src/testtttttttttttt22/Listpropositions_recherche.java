@@ -16,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
  * @author khalil
  */
 public class Listpropositions_recherche extends AbstractTableModel{
-    String [] user={"Id","titre","description","Durée Estimée","Date debut","date fin","Budget","Id Categorie","Competence"};
+    String [] user={"Id","titre","description","Durée Estimée","Date debut","date fin","Budget","Nom Categorie","Nom freelancer","Nom competence","Nom proprietaire"};
       List<Proposition> all=new ArrayList<Proposition>();
 
     public Listpropositions_recherche() {
@@ -67,7 +67,11 @@ public class Listpropositions_recherche extends AbstractTableModel{
             case 7: 
                 return all.get(rowIndex).getCat().getNom();
             case 8: 
-                return all.get(rowIndex).getCompetence();
+                return all.get(rowIndex).getFree().getNom();
+           case 9: 
+                return all.get(rowIndex).getCateg().getNom();
+               case 10: 
+                return all.get(rowIndex).getProp().getNom();
             default:
                 return null;
         }

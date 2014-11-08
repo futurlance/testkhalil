@@ -36,7 +36,7 @@ public class freelancerdao implements IFreelancer{
     private static final String SQL_FIND_NOM =  "SELECT * FROM freelancerr WHERE nom=?";
     private static final String SQL_FIND_ALL ="SELECT * FROM freelancerr ";
       private static final String SQL_DELETE ="DELETE FROM  freelancerr  WHERE ID=?";
-      private static final String SQL_UPDATE ="UPDATE  freelancerr SET status=? WHERE ID=?";
+      private static final String SQL_UPDATE ="UPDATE  freelancerr SET statut=? WHERE ID=?";
 
     public freelancerdao()  {
         connexion = dataSource.getInstance().getConnection();
@@ -128,7 +128,7 @@ public class freelancerdao implements IFreelancer{
                 String freeVille = rs.getString("ville");
                 String freeLogin = rs.getString("login");
                 String freePwd = rs.getString("password");
-                String freestatut = rs.getString("status");
+                String freestatut = rs.getString("statut");
                 found = new freelancer(freeId,freePrenom, freeNom, freeEmail, freePays, freeVille, freeLogin, freePwd,freestatut);
             }
 
@@ -222,7 +222,7 @@ public class freelancerdao implements IFreelancer{
                 String freeVille = rs.getString("ville");
                 String freeLogin = rs.getString("login");
                 String freePwd = rs.getString("password");
-                String freestatut = rs.getString("status");
+                String freestatut = rs.getString("statut");
                freelancer found = new freelancer(freeId,freePrenom, freeNom, freeEmail, freePays, freeVille, freeLogin, freePwd,freestatut);
               all.add(found);}
        }

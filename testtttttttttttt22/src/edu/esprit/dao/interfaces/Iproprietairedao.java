@@ -18,5 +18,6 @@ public interface Iproprietairedao {
      void delete(proprietaire categorie);
      void update_actif(proprietaire categorie);
     void update_nonactif(proprietaire categorie) ;
+    proprietaire findById1(String ch);
     
 }

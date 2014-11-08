@@ -18,12 +18,15 @@ public class Proposition {
     private String dure_fin;
     private float budget;
     private Categorie cat;
-    private String competence;
+    private freelancer free;
+    private competence categ;
+    private proprietaire prop;
+    
 
     public Proposition() {
     }
 
-    public Proposition(int id, String titre, String description, String dure_estime, String dure_debut, String dure_fin, float budget, Categorie cat, String competence) {
+    public Proposition(int id, String titre, String description, String dure_estime, String dure_debut, String dure_fin, float budget, Categorie cat, freelancer free, competence categ, proprietaire prop) {
         this.id = id;
         this.titre = titre;
         this.description = description;
@@ -32,87 +35,104 @@ public class Proposition {
         this.dure_fin = dure_fin;
         this.budget = budget;
         this.cat = cat;
-        this.competence = competence;
+        this.free = free;
+        this.categ = categ;
+        this.prop = prop;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getTitre() {
-        return titre;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getDure_estime() {
-        return dure_estime;
-    }
-
-    public String getDure_debut() {
-        return dure_debut;
-    }
-
-    public String getDure_fin() {
-        return dure_fin;
-    }
-
-    public float getBudget() {
-        return budget;
-    }
-
-    public Categorie getCat() {
-        return cat;
-    }
-
-    public String getCompetence() {
-        return competence;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitre() {
+        return titre;
     }
 
     public void setTitre(String titre) {
         this.titre = titre;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDure_estime() {
+        return dure_estime;
     }
 
     public void setDure_estime(String dure_estime) {
         this.dure_estime = dure_estime;
     }
 
+    public String getDure_debut() {
+        return dure_debut;
+    }
+
     public void setDure_debut(String dure_debut) {
         this.dure_debut = dure_debut;
+    }
+
+    public String getDure_fin() {
+        return dure_fin;
     }
 
     public void setDure_fin(String dure_fin) {
         this.dure_fin = dure_fin;
     }
 
+    public float getBudget() {
+        return budget;
+    }
+
     public void setBudget(float budget) {
         this.budget = budget;
+    }
+
+    public Categorie getCat() {
+        return cat;
     }
 
     public void setCat(Categorie cat) {
         this.cat = cat;
     }
 
-    public void setCompetence(String competence) {
-        this.competence = competence;
+    public freelancer getFree() {
+        return free;
     }
-    
-    
-   
-    @Override
-    public String toString() {
-        return "Proposition{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", dure_estime=" + dure_estime + ", dure_debut=" + dure_debut + ", dure_fin=" + dure_fin + ", budget=" + budget + ", cat=" + cat + ", competence=" + competence + '}';
+
+    public void setFree(freelancer free) {
+        this.free = free;
     }
+
+    public competence getCateg() {
+        return categ;
+    }
+
+    public void setCateg(competence categ) {
+        this.categ = categ;
+    }
+
+    public proprietaire getProp() {
+        return prop;
+    }
+
+    public void setProp(proprietaire prop) {
+        this.prop = prop;
+    }
+
+    
+
+    
+
+    
 
     
 
