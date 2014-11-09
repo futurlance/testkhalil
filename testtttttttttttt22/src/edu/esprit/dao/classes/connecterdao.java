@@ -26,6 +26,7 @@ public class connecterdao implements IConnecterDao{
     private Statement stmt;
     private static final String SQL_FIND_ALL ="SELECT * FROM connecter ";
     private static final String SQL_SAVE ="INSERT INTO connecter(id_conecter) values (?)";
+    private static final String SQL_DELETE ="DELETE FROM  connecter  WHERE id_conecter=?";
     
     private static IConnecterDao ifreelancerdao;
     public static IConnecterDao getInstance() {
@@ -80,4 +81,23 @@ public class connecterdao implements IConnecterDao{
         
         
     }
+     //***********************delete
+     public void delete(connecter categorie) {
+        
+        if(findAll()!=null){
+       PreparedStatement pstmt=null;
+        try {
+            pstmt=connexion.prepareCall(SQL_DELETE);
+             pstmt.setInt( 1, categorie.getId());
+            pstmt.executeUpdate();
+            Logger.getLogger(connecterdao.class.getName()).log(Level.SEVERE, "delete succee");
+        } catch (SQLException ex) {
+            Logger.getLogger(connecterdao.class.getName()).log(Level.SEVERE, "delete failed", ex);
+        }
+        
+        
+    }
+        
+
+}
 }

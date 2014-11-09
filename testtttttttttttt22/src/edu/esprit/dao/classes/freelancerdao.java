@@ -37,6 +37,7 @@ public class freelancerdao implements IFreelancer{
     private static final String SQL_FIND_ALL ="SELECT * FROM freelancerr ";
       private static final String SQL_DELETE ="DELETE FROM  freelancerr  WHERE ID=?";
       private static final String SQL_UPDATE ="UPDATE  freelancerr SET statut=? WHERE ID=?";
+      private static final String SQL_FIND_LOGIN =  "SELECT * FROM freelancerr WHERE login=?";
 
     public freelancerdao()  {
         connexion = dataSource.getInstance().getConnection();
@@ -251,5 +252,35 @@ public class freelancerdao implements IFreelancer{
     }
     }
    
-   
+   //***********************
+    public freelancer findById1(String ch) {
+        freelancer found = null;
+        
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;       
+        
+        try{
+            
+            pstmt = connexion.prepareStatement(SQL_FIND_LOGIN);
+            pstmt.setString(1, ch);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                int freeId = rs.getInt("id");
+               String freePrenom = rs.getString("prenom");
+                String freeNom = rs.getString("nom");
+                String freeEmail = rs.getString("email");
+                String freePays = rs.getString("pays");
+                String freeVille = rs.getString("ville");
+                String freeLogin = rs.getString("login");
+                String freePwd = rs.getString("password");
+                String freestatut = rs.getString("statut");
+        found = new freelancer(freeId,freePrenom, freeNom, freeEmail, freePays, freeVille, freeLogin, freePwd,freestatut);
+            }
+
+                
+        }catch(SQLException  ex){
+           Logger.getLogger(proprietairedao.class.getName()).log(Level.SEVERE, "find failed", ex);
+        }
+        return found;
+    }
 }

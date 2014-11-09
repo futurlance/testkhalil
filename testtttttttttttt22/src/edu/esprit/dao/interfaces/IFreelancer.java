@@ -20,4 +20,5 @@ public interface IFreelancer {
     void delete(freelancer categorie);
     void update_actif(freelancer categorie);
     void update_nonactif(freelancer categorie) ;
+    freelancer findById1(String ch);
 }

@@ -14,4 +14,5 @@ import java.util.List;
 public interface IConnecterDao {
     connecter findAll();
     void save(connecter categorie);
+    void delete(connecter categorie);
 }

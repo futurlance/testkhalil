@@ -1034,6 +1034,34 @@ public class premiere_page extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Attetion : Login ou mot de passe Erronée ");
         }
         //*****************************
+        //********freelancer**************
+        if(user_type.equals("freelancer"))
+        {
+            
+            IFreelancer adminn= new freelancerdao();
+            freelancer admin=new freelancer();
+            
+            admin=adminn.findById1(login);
+            if((admin.getLogin().equals(login))&&(admin.getPwd().equals(pwd)))
+            {       
+                    
+                    freelancer_gestion page;
+                try {
+                    page = new freelancer_gestion();
+                    this.setVisible(false);
+                    page.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(premiere_page.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    
+                    IConnecterDao icon=new connecterdao();
+                    connecter con=new connecter(admin.getId());
+                    icon.save(con);
+                    
+            }
+            else
+            JOptionPane.showMessageDialog(null, "Attetion : Login ou mot de passe Erronée ");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cat_buutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cat_buutonActionPerformed

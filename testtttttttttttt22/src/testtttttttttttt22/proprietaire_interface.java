@@ -851,6 +851,12 @@ public class proprietaire_interface extends javax.swing.JFrame {
         this.setVisible(false);
         premiere_page page=new premiere_page();
         page.setVisible(true);
+        connecter conn=new connecter();
+        
+        IConnecterDao con=new connecterdao();
+        conn=con.findAll();
+        JOptionPane.showMessageDialog(null, conn.getId());
+        con.delete(conn);
     }//GEN-LAST:event_deconnexion_buttonActionPerformed
 
     /**
