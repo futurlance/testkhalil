@@ -19,8 +19,8 @@ public class Proposition {
     private float budget;
     private Categorie cat;
     private String competence;
-    private String statut;
-    int y;
+    private String statut
+    int y
     public Proposition() {
     }
 
