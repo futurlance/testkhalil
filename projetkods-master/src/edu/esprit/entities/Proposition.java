@@ -17,7 +17,7 @@ public class Proposition {
     private String date_debut;
         private String date_fin;
     private float budget;
-    private Categorie cat;
+    private Categorie cat
     private String competence;
     private String statut
     int y
